@@ -107,9 +107,16 @@ class BinarySearchTree:
             elif self.right is None:
                 return self.left
             
-            min = self.right.find_min()
-            self.data = min 
-            self.right = self.right.delete_element(min)
+            #There are two ways two delete parent which consist both left and eight 
+            # First we can Find max from left and then replace the max value with the value which we want to delete.
+            max = self.left.find_max()
+            self.data = max 
+            self.left = self.left.delete_element(max)
+            
+            #Second we can find min from right and then replace the min value with the value which we want to delete.
+            # min = self.right.find_min()
+            # self.data = min
+            # self.right = self.right.delete_element(min)
         
         return self
 
@@ -128,9 +135,9 @@ def build_tree(elements):
 numbers = [17, 4, 1, 20, 9, 23, 18, 34]
 
 root = build_tree(numbers)
-print(root.delete_element(34))
-print(root.delete_element(23))
-print(root.delete_element(20))
+# print(root.delete_element(34))
+# print(root.delete_element(23))
+# print(root.delete_element(20))
 print()
 print("Inorder:-",(root.inorder_traversal()))
 # print()
