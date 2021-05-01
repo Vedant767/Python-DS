@@ -1,9 +1,10 @@
-from collections import deque
+letters = []
 
-numbers = deque()
+letters.append('c')
+letters.append('d')
+letters.append('e')
+letters.append('f')
+letters.append('g')
 
-numbers.append(10)
-numbers.append(20)
-
-numbers.popleft()
-print(numbers)
+letters.pop()
+print(letters[-1])
