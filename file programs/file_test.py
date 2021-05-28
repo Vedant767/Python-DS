@@ -1,7 +1,7 @@
 
 file = open("abc.txt")
-
-data = file.readlines()
-
-for info in data:
+data = " "
+for i in range(5):
+    data = file.read()
+    info = data.split()
     print(info)
