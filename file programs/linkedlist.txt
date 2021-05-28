@@ -1,0 +1,95 @@
+class Node:
+    def __init__(self, data):
+        self.value = data
+        self.ref = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+    
+    def display(self):
+        if self.head is None:
+            print("List is empty")
+        else:
+            n = self.head
+            while n is not None:
+                print(f"{n.value} -> ",end="")
+                n = n.ref
+    
+    def insert_at_head(self,data):
+        new_node = Node(data)
+        new_node.ref = self.head
+        self.head = new_node
+    
+    def insert_at_end(self,data):
+        new = Node(data)
+        if self.head is None:
+            self.head = Node
+            return
+
+        n = self.head
+
+        while n.ref is not None:
+            n = n.ref
+        
+        n.ref = new
+
+    def insert_after_node(self,x,data):
+        n = self.head
+        while n is not None:
+            if n.value == x:
+                break
+            n = n.ref
+
+        if n is None:
+            print("Value not found")
+        else:
+            new  = Node(data)
+            new.ref = n.ref
+            n.ref = new
+
+    def insert_before_node(self,x,data):
+        if x == self.head.value:
+            new = Node(data)
+            new.ref = self.head
+            self.head = new
+            return
+        n = self.head
+        while n.ref is not None:
+            if n.ref.value == x:
+                new = Node(data)
+                new.ref = n.ref
+                n.ref = new
+            else:
+                print("Vlaue not found")
+            n = n.ref
+    
+    def insert_at_index(self,index,data):
+ 
+        if index == 1:
+            new = Node(data)
+            new.ref = self.head
+            self.head = new
+            return
+        
+        i = 1
+        n = self.head
+        while i < index and n is not None:
+            if i == index:
+                break
+            n = n.ref
+            i += 1
+        
+        if n is None:
+            print("Index out of bound")
+        else:
+            new = Node(data)
+            new.ref = n.ref
+            n.ref = new
+            
+l = SinglyLinkedList()
+l.insert_at_head(3)
+l.insert_after_node(3,5)
+l.insert_after_node(5,2)
+l.insert_before_node(5,1)
+l.display()
